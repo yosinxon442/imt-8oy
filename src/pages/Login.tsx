@@ -23,12 +23,12 @@ const Login = () => {
 
         const phoneRegex = /^\+998\d{9}$/;
         if (!phoneRegex.test(phoneNumber)) {
-            alert("Iltimos, to'g'ri telefon raqam kiriting (+998901234567)");
+            alert('Iltimos, to‘g‘ri telefon raqam kiriting (+998901234567)');
             return;
         }
 
         if (password.length < 6) {
-            alert("Parol kamida 6 ta belgidan iborat bo'lishi kerak");
+            alert('Parol kamida 6 ta belgidan iborat bo‘lishi kerak');
             return;
         }
 
@@ -36,12 +36,11 @@ const Login = () => {
             const userData = await login(phoneNumber, password);
             authLogin(userData.tokens, {
                 ...userData,
-                phone_number: userData.phone,
                 name: userData.first_name 
                     ? `${userData.first_name} ${userData.last_name || ''}`.trim() 
                     : undefined
             });
-            navigate('/profile');
+            navigate('/');
         } catch (err) {
             console.error('Login error:', err);
         }
@@ -59,10 +58,10 @@ const Login = () => {
 
                     {error && (
                         <div className="error-message">
-                            {error === "Telefon raqam yoki parol noto'g'ri" ? (
+                            {error === 'Telefon raqam yoki parol noto‘g‘ri' ? (
                                 <>
-                                    <p>Kiritilgan ma'lumotlar noto'g'ri</p>
-                                    <p>Iltimos, qaytadan urinib ko'ring</p>
+                                    <p>Kiritilgan ma'lumotlar noto‘g‘ri</p>
+                                    <p>Iltimos, qaytadan urinib ko‘ring</p>
                                 </>
                             ) : (
                                 error
