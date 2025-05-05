@@ -1,0 +1,167 @@
+.user-profile-card {
+  background-color: var(--card-bg);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.profile-header {
+  position: relative;
+}
+
+.profile-bg {
+  height: 100px;
+  background: linear-gradient(135deg, #3b82f6, #1e40af);
+}
+
+.profile-info {
+  display: flex;
+  align-items: flex-start;
+  padding: 0 1.5rem 1.5rem;
+  position: relative;
+}
+
+.avatar-large {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: #fff;
+  color: var(--primary-color);
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 2rem;
+  border: 4px solid white;
+  margin-top: -40px;
+  margin-right: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.user-info {
+  padding-top: 1rem;
+  flex: 1;
+}
+
+.user-role {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.user-name {
+  margin: 0.25rem 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.user-role-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(59, 130, 246, 0.1);
+  color: var(--primary-color);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 1rem;
+}
+
+.balance-card {
+  padding: 1rem;
+  background: linear-gradient(135deg, #3b82f6, #1e40af);
+  border-radius: 0.5rem;
+  color: white;
+  box-shadow: var(--shadow-md);
+  min-width: 200px;
+  margin-top: 1rem;
+}
+
+.balance-label {
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+.balance-amount {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 0.25rem;
+}
+
+.profile-statistics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.stat-box {
+  text-align: center;
+}
+
+.stat-box h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.stat-box p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.profile-details {
+  padding: 1.5rem;
+}
+
+.details-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.detail-value {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+@media (max-width: 1024px) {
+  .profile-info {
+    flex-direction: column;
+  }
+  
+  .balance-card {
+    margin-top: 1rem;
+    width: 100%;
+  }
+  
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-statistics {
+    grid-template-columns: 1fr;
+  }
+}
