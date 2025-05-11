@@ -13,6 +13,7 @@ import Employees from './pages/Employees';
 import Clients from './pages/Clients';
 import NotFound from './pages/NotFound';
 import Profile from './pages/Profile';
+import Simeniyalar from './pages/Simeniyalar';
 
 import './styles/app.css';
 
@@ -66,6 +67,8 @@ function App() {
             />
             
             <Route path="/profile" element={<Profile />} />
+            
+            <Route path="/simeniyalar" element={<Simeniyalar />} />
             
             <Route path="*" element={<NotFound />} />
           </Routes>

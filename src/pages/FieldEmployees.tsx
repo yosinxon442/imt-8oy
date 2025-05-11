@@ -1,30 +1,26 @@
-// import DataTable from '../components/DataTable';
-// import { TableData } from '../types';
-// import { useEmployees } from '../hooks/useEmployees';
 import { useEffect, useState } from 'react';
 
-type Branch = {
+interface Branch {
   id: number;
   name: string;
-};
+}
 
-type Employee = {
+interface Shift {
   id: number;
-  user: {
-    full_name: string;
-    phone_number: string;
-    birth_date: string;
-  };
-  user_role?: string;
-  position?: string;
-  official_salary?: string;
-};
+  name: string;
+  branch: number;
+  branch_name: string;
+  start_time: string;
+  end_time: string;
+  created_at: string;
+  updated_at: string;
+}
 
-const Employees = () => {
-  const [loading, setLoading] = useState(false);
+const FieldEmployees = () => {
   const [branches, setBranches] = useState<Branch[]>([]);
   const [branchId, setBranchId] = useState<number | null>(null);
-  const [employees, setEmployees] = useState<Employee[]>([]);
+  const [shifts, setShifts] = useState<Shift[]>([]);
+  const [loading, setLoading] = useState(false);
   const [branchesLoading, setBranchesLoading] = useState(false);
 
   // Filiallar ro'yxatini olish
@@ -53,40 +49,37 @@ const Employees = () => {
     fetchBranches();
   }, []);
 
-  // Tanlangan filial uchun xodimlarni olish
+  // Tanlangan filial uchun smenalarni olish
   useEffect(() => {
     if (!branchId) return;
-    const fetchEmployees = async () => {
+    const fetchShifts = async () => {
       setLoading(true);
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch(
-          `https://api.noventer.uz/api/v1/employee/employees/branch/${branchId}/`,
-          {
-            headers: {
-              'Authorization': `Bearer ${token}`,
-              'accept': 'application/json',
-            },
-          }
-        );
+        const response = await fetch(`https://api.noventer.uz/api/v1/company/shifts/${branchId}/`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'accept': 'application/json',
+          },
+        });
         if (response.ok) {
           const data = await response.json();
-          setEmployees(data.results || []);
+          setShifts(Array.isArray(data) ? data : []);
         } else {
-          setEmployees([]);
+          setShifts([]);
         }
       } catch (error) {
-        setEmployees([]);
+        setShifts([]);
       } finally {
         setLoading(false);
       }
     };
-    fetchEmployees();
+    fetchShifts();
   }, [branchId]);
 
   return (
-    <div className="employees-page">
-      <div style={{ marginBottom: '1rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
+    <div className="field-employees-page">
+      <div style={{ marginBottom: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
         <label htmlFor="branch">Filial tanlang:</label>
         {branchesLoading ? (
           <span>Filiallar yuklanmoqda...</span>
@@ -112,21 +105,21 @@ const Employees = () => {
         <table className="data-table">
           <thead>
             <tr>
-              <th>F.I.O</th>
-              <th>Telefon raqami</th>
-              <th>Lavozim</th>
-              <th>Tug'ilgan sana</th>
-              <th>Maosh</th>
+              <th>ID</th>
+              <th>Filial nomi</th>
+              <th>Smena nomi</th>
+              <th>Boshlanish vaqti</th>
+              <th>Tugash vaqti</th>
             </tr>
           </thead>
           <tbody>
-            {employees.map(emp => (
-              <tr key={emp.id}>
-                <td>{emp.user?.full_name}</td>
-                <td>{emp.user?.phone_number}</td>
-                <td>{emp.position || emp.user_role}</td>
-                <td>{emp.user?.birth_date}</td>
-                <td>{emp.official_salary}</td>
+            {shifts.map(shift => (
+              <tr key={shift.id}>
+                <td>{shift.id}</td>
+                <td>{shift.branch_name}</td>
+                <td>{shift.name}</td>
+                <td>{shift.start_time}</td>
+                <td>{shift.end_time}</td>
               </tr>
             ))}
           </tbody>
@@ -136,4 +129,4 @@ const Employees = () => {
   );
 };
 
-export default Employees;
+export default FieldEmployees; 

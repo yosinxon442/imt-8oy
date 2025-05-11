@@ -4,49 +4,55 @@ import { useAuth } from '../context/AuthContext';
 import '../styles/profile.css';
 
 interface UserProfile {
-  id: number;
-  name: string;
+  id: string;
+  full_name: string;
+  gender: string;
+  birth_date: string;
   email: string;
-  phone: string;
   role: string;
+  face_id: string;
+  company_id: string;
   avatar: string;
+  salary_type: string;
 }
 
 const Profile: React.FC = () => {
-  const { user, isAuthenticated } = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    const token = localStorage.getItem('token');
+    if (!token) {
       navigate('/login');
       return;
     }
 
     const fetchProfile = async () => {
       try {
-        const response = await fetch('https://api.noventer.uz/api/profile', {
+        const response = await fetch('http://api.noventer.uz/api/v1/accounts/me/', {
+          method: 'GET',
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-          }
+            'Authorization': `Bearer ${token}`,
+            'accept': 'application/json',
+          },
         });
-
         if (response.ok) {
           const data = await response.json();
           setProfile(data);
         } else {
-          console.error('Profile ma\'lumotlarini olishda xatolik');
+          setProfile(null);
         }
       } catch (error) {
-        console.error('Profile ma\'lumotlarini olishda xatolik:', error);
+        setProfile(null);
       } finally {
         setLoading(false);
       }
     };
 
     fetchProfile();
-  }, [isAuthenticated, navigate]);
+  }, [navigate]);
 
   if (loading) {
     return (
@@ -70,37 +76,48 @@ const Profile: React.FC = () => {
       <div className="profile-header">
         <h1>Profil</h1>
       </div>
-      
       <div className="profile-content">
         <div className="profile-avatar">
           <div className="avatar-circle">
             {profile.avatar ? (
-              <img src={profile.avatar} alt={profile.name} />
+              <img src={profile.avatar} alt={profile.full_name} />
             ) : (
-              <span>{profile.name.charAt(0)}</span>
+              <span>{profile.full_name.charAt(0)}</span>
             )}
           </div>
         </div>
-
         <div className="profile-info">
           <div className="info-group">
             <label>F.I.O</label>
-            <p>{profile.name}</p>
+            <p>{profile.full_name}</p>
           </div>
-
           <div className="info-group">
             <label>Email</label>
             <p>{profile.email}</p>
           </div>
-
           <div className="info-group">
-            <label>Telefon raqami</label>
-            <p>{profile.phone}</p>
+            <label>Jinsi</label>
+            <p>{profile.gender}</p>
           </div>
-
+          <div className="info-group">
+            <label>Tug'ilgan sana</label>
+            <p>{profile.birth_date}</p>
+          </div>
           <div className="info-group">
             <label>Lavozim</label>
             <p>{profile.role}</p>
+          </div>
+          <div className="info-group">
+            <label>Face ID</label>
+            <p>{profile.face_id}</p>
+          </div>
+          <div className="info-group">
+            <label>Kompaniya ID</label>
+            <p>{profile.company_id}</p>
+          </div>
+          <div className="info-group">
+            <label>Maosh turi</label>
+            <p>{profile.salary_type}</p>
           </div>
         </div>
       </div>

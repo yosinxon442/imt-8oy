@@ -1,6 +1,3 @@
-// import DataTable from '../components/DataTable';
-// import { TableData } from '../types';
-// import { useEmployees } from '../hooks/useEmployees';
 import { useEffect, useState } from 'react';
 
 type Branch = {
@@ -20,11 +17,11 @@ type Employee = {
   official_salary?: string;
 };
 
-const Employees = () => {
-  const [loading, setLoading] = useState(false);
+const Simeniyalar = () => {
   const [branches, setBranches] = useState<Branch[]>([]);
   const [branchId, setBranchId] = useState<number | null>(null);
   const [employees, setEmployees] = useState<Employee[]>([]);
+  const [loading, setLoading] = useState(false);
   const [branchesLoading, setBranchesLoading] = useState(false);
 
   // Filiallar ro'yxatini olish
@@ -85,7 +82,7 @@ const Employees = () => {
   }, [branchId]);
 
   return (
-    <div className="employees-page">
+    <div className="simeniyalar-page">
       <div style={{ marginBottom: '1rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
         <label htmlFor="branch">Filial tanlang:</label>
         {branchesLoading ? (
@@ -136,4 +133,4 @@ const Employees = () => {
   );
 };
 
-export default Employees;
+export default Simeniyalar; 

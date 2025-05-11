@@ -45,7 +45,7 @@ export function useEmployees(params?: { search?: string; limit?: number; offset?
       setError(null);
       try {
         const token = localStorage.getItem('token');
-        const url = new URL('/api/api/v1/employee/employees/', window.location.origin);
+        const url = new URL('/api/api/v1/eemployee/employees/branch/2/', window.location.origin);
         if (params?.search) url.searchParams.append('search', params.search);
         if (params?.limit) url.searchParams.append('limit', params.limit.toString());
         if (params?.offset) url.searchParams.append('offset', params.offset.toString());
