@@ -14,6 +14,7 @@ import Clients from './pages/Clients';
 import NotFound from './pages/NotFound';
 import Profile from './pages/Profile';
 import Simeniyalar from './pages/Simeniyalar';
+import SimeniyaAddEmployee from './pages/SimeniyaAddEmployee';
 
 import './styles/app.css';
 
@@ -68,7 +69,27 @@ function App() {
             
             <Route path="/profile" element={<Profile />} />
             
-            <Route path="/simeniyalar" element={<Simeniyalar />} />
+            <Route 
+              path="/simeniyalar" 
+              element={
+                <ProtectedRoute>
+                  <Layout>
+                    <Simeniyalar />
+                  </Layout>
+                </ProtectedRoute>
+              } 
+            />
+            
+            <Route 
+              path="/simeniyalar/add-employee" 
+              element={
+                <ProtectedRoute>
+                  <Layout>
+                    <SimeniyaAddEmployee />
+                  </Layout>
+                </ProtectedRoute>
+              } 
+            />
             
             <Route path="*" element={<NotFound />} />
           </Routes>

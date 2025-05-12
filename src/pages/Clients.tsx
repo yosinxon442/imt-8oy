@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import DataTable from '../components/DataTable';
 import { TableData } from '../types';
+import '../styles/clients.css';
 
 const Clients = () => {
   const [clientsData, setClientsData] = useState<TableData[]>([]);

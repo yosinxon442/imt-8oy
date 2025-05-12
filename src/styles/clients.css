@@ -1,0 +1,105 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+  padding: 0.5rem;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: #333;
+}
+
+.modal h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.modal form div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modal label {
+  color: #555;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.modal input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.modal input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.modal input[type="file"] {
+  padding: 0.5rem;
+  background: #f8f9fa;
+  cursor: pointer;
+}
+
+.modal button[type="submit"] {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.modal button[type="submit"]:hover {
+  background: #1d4ed8;
+}
+
+.modal button[type="submit"]:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+}

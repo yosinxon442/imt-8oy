@@ -42,10 +42,10 @@ const Sidebar = () => {
               <span>Mijozlar</span>
             </Link>
           </li>
-          <li className={active === '/branch-employees' ? 'active' : ''}>
-            <Link to="/branch-employees">
+          <li className={active === '/simeniyalar' ? 'active' : ''}>
+            <Link to="/simeniyalar">
               <FiUsers className="nav-icon" />
-              <span>Smenalar</span>
+              <span>Simeniyalar</span>
             </Link>
           </li>
           <li className={active === '/takliflar' ? 'active' : ''}>
@@ -64,12 +64,6 @@ const Sidebar = () => {
             <Link to="/sozlamalar">
               <FiSettings className="nav-icon" />
               <span>Sozlamalar</span>
-            </Link>
-          </li>
-          <li className={active === '/simeniyalar' ? 'active' : ''}>
-            <Link to="/simeniyalar">
-              <FiUsers className="nav-icon" />
-              <span>Simeniyalar</span>
             </Link>
           </li>
         </ul>

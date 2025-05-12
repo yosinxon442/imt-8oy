@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 type Branch = {
   id: number;
@@ -23,6 +24,7 @@ const Simeniyalar = () => {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [loading, setLoading] = useState(false);
   const [branchesLoading, setBranchesLoading] = useState(false);
+  const navigate = useNavigate();
 
   // Filiallar ro'yxatini olish
   useEffect(() => {
@@ -83,22 +85,30 @@ const Simeniyalar = () => {
 
   return (
     <div className="simeniyalar-page">
-      <div style={{ marginBottom: '1rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
-        <label htmlFor="branch">Filial tanlang:</label>
-        {branchesLoading ? (
-          <span>Filiallar yuklanmoqda...</span>
-        ) : (
-          <select
-            id="branch"
-            value={branchId ?? ''}
-            onChange={e => setBranchId(Number(e.target.value))}
-            style={{ padding: '0.5rem 1rem', borderRadius: '6px', border: '1px solid #ccc' }}
-          >
-            {branches.map(branch => (
-              <option key={branch.id} value={branch.id}>{branch.name}</option>
-            ))}
-          </select>
-        )}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <label htmlFor="branch">Filial tanlang:</label>
+          {branchesLoading ? (
+            <span>Filiallar yuklanmoqda...</span>
+          ) : (
+            <select
+              id="branch"
+              value={branchId ?? ''}
+              onChange={e => setBranchId(Number(e.target.value))}
+              style={{ padding: '0.5rem 1rem', borderRadius: '6px', border: '1px solid #ccc' }}
+            >
+              {branches.map(branch => (
+                <option key={branch.id} value={branch.id}>{branch.name}</option>
+              ))}
+            </select>
+          )}
+        </div>
+        <button
+          style={{ background: '#6C63FF', color: '#fff', padding: '8px 20px', borderRadius: 6, border: 'none' }}
+          onClick={() => navigate('/simeniyalar/add-employee')}
+        >
+          Hodim qo‘shish
+        </button>
       </div>
       {loading ? (
         <div className="profile-loading">
