@@ -12,12 +12,11 @@ const DataTable: React.FC<DataTableProps> = ({ title, data }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
 
-  // Get current items
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
 
-  // Change page
+
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (

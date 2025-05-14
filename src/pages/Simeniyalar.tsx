@@ -26,7 +26,6 @@ const Simeniyalar = () => {
   const [branchesLoading, setBranchesLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Filiallar ro'yxatini olish
   useEffect(() => {
     const fetchBranches = async () => {
       setBranchesLoading(true);
@@ -52,7 +51,6 @@ const Simeniyalar = () => {
     fetchBranches();
   }, []);
 
-  // Tanlangan filial uchun xodimlarni olish
   useEffect(() => {
     if (!branchId) return;
     const fetchEmployees = async () => {

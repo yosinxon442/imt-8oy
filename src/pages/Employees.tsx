@@ -27,7 +27,6 @@ const Employees = () => {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [branchesLoading, setBranchesLoading] = useState(false);
 
-  // Filiallar ro'yxatini olish
   useEffect(() => {
     const fetchBranches = async () => {
       setBranchesLoading(true);
@@ -53,7 +52,6 @@ const Employees = () => {
     fetchBranches();
   }, []);
 
-  // Tanlangan filial uchun xodimlarni olish
   useEffect(() => {
     if (!branchId) return;
     const fetchEmployees = async () => {
@@ -95,7 +93,7 @@ const Employees = () => {
             id="branch"
             value={branchId ?? ''}
             onChange={e => setBranchId(Number(e.target.value))}
-            style={{ padding: '0.5rem 1rem', borderRadius: '6px', border: '1px solid #ccc' }}
+            style={{ padding: '0.5rem 1rem', borderRadius: '6px', border: '1px solid #ccc', color:'black' }}
           >
             {branches.map(branch => (
               <option key={branch.id} value={branch.id}>{branch.name}</option>

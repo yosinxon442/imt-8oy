@@ -111,7 +111,7 @@ const UserProfile = () => {
         <div className="profile-info">
           <div className="avatar-large">
             {profile.avatar ? (
-              <img src={profile.avatar} alt="Avatar" style={{width: 40, height: 40, borderRadius: '50%'}} />
+              <img src={profile.avatar} alt="Avatar" style={{width: 80, height: 80, borderRadius: '50%'}} />
             ) : (
               <FiUser size={40} />
             )}
