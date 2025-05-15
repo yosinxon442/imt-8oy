@@ -1,6 +1,3 @@
-// import DataTable from '../components/DataTable';
-// import { TableData } from '../types';
-// import { useEmployees } from '../hooks/useEmployees';
 import { useEffect, useState } from 'react';
 
 type Branch = {

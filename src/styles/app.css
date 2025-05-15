@@ -79,7 +79,6 @@ input, button, textarea, select {
   padding: 0 1rem;
 }
 
-/* Responsive helpers */
 @media (max-width: 768px) {
   :root {
     font-size: 14px;

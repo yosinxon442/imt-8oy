@@ -93,7 +93,7 @@ const Simeniyalar = () => {
               id="branch"
               value={branchId ?? ''}
               onChange={e => setBranchId(Number(e.target.value))}
-              style={{ padding: '0.5rem 1rem', borderRadius: '6px', border: '1px solid #ccc' }}
+              style={{ padding: '0.5rem 1rem', borderRadius: '6px', border: '1px solid #ccc', color:'black' }}
             >
               {branches.map(branch => (
                 <option key={branch.id} value={branch.id}>{branch.name}</option>

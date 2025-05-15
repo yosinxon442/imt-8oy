@@ -14,7 +14,6 @@ export interface Profile {
   salary_type?: string;
   balance?: number;
   inn?: string;
-  // boshqa kerakli maydonlar bo'lsa shu yerga qo'shing
 }
 
 export function useProfile() {
